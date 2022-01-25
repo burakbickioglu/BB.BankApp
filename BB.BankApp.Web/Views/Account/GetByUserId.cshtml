@@ -1,0 +1,40 @@
+﻿@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@model List<AccountListModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row mt-4">
+    <div class="col-6">
+        <h5 >Kullanıcı Bilgileri</h5>
+        <div class="card">
+            <div class="card-body">
+                <p class="card-text">Ad : @ViewBag.FullName</p>
+                <a asp-action="Index" asp-controller="Home" class="btn btn-primary">Kullanıcı Listesine Geri Dön</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <h5>Hesap Bilgileri</h5>
+        @if (Model.Count>0)
+        {
+            foreach (var account in Model)
+            {
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Hesap Numarası : @account.AccountNumber</h5>
+                        <p class="card-text">Bakiye Bilgisi : @account.Balance</p>
+                        <a asp-action="SendMoney" asp-controller="Account" asp-route-accountId="@account.Id" class="btn btn-primary">Para Gönder</a>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="alert alert-primary" role="alert">
+                Kullanıcının Hesap Bilgisi Bulunamadı
+            </div>
+        }
+
+
+    </div>
+</div>
