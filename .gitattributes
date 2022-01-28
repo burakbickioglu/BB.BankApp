@@ -22,4 +22,3 @@
 *.RTF	 diff=astextplain
 
 *.js linguist-detectable=false
-*.css linguist-detectable=false
